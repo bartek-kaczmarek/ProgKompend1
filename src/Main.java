@@ -6,26 +6,46 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int playerChoice = 1;
-        int points = 0;
+        int playerChoice;
+        int pointsTemp = 0;
+        int pointsHard = 0;
         int wynik = 0;
+        boolean czyGra = true;
+        Random random = new Random();
+
         do {
             System.out.println("Chcesz rzucić kostką czy spasować?");
-            Random random = new Random();
-            wynik = random.nextInt(1, 7);
-            System.out.println("Twój wynik to: " + wynik);
-
-
+            System.out.println("Twój wynik to: " + pointsTemp);
             System.out.println("1. rzucam");
             System.out.println("2. pasuję");
             playerChoice = scanner.nextInt();
+            if (playerChoice == 2) {
+                czyGra = false;
+            }
+
+            if (pointsTemp < 0) {
+                czyGra = false;
+            }
+
+            wynik = random.nextInt(1, 7);
+            System.out.println("Rzucasz... wypadło " + wynik);
+            if (wynik == pointsTemp) {
+                pointsHard = pointsTemp;
+                pointsTemp = 0;
+            }
+
             if (wynik == 1) {
                 System.out.println("Przegrałeś!");
             } else {
-
-                points = points + wynik;
+                pointsTemp += wynik;
             }
-        } while ((points < 20));
-        System.out.println("Koniec gry - wygrałeś!");
+            if (pointsTemp > 20) {
+                czyGra = false;
+            }
+
+
+        } while (czyGra == true);
+
+        System.out.println("Koniec gry uzbierałeś " + pointsTemp);
     }
 }
