@@ -21,7 +21,8 @@ public class Main {
         System.out.println("Twoja liczba to " + liczbaWylosowana);
 
         float liczbaDzies = random.nextFloat(0.0f,1.0f);
-        System.out.println("Twoja liczba to " + liczbaDzies);
+        System.out.println("Twoja liczba dziesiętna to ");
+        System.out.printf(" %.2f",liczbaDzies);
 
 
         for (int i = 0; i < 10; i++) {
