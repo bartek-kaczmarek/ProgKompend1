@@ -1,3 +1,4 @@
+import java.sql.Struct;
 import java.util.Scanner;
 
 public class Warunkowe {
