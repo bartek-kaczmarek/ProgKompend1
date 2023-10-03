@@ -1,53 +1,33 @@
 import java.util.Random;
 import java.util.Scanner;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int playerChoice;
-        int pointsTemp = 0;
-        int pointsHard = 0;
-        int wynik = 0;
-        boolean czyGra = true;
+        String[] pyt1 = {"1", "Jaka jest stolica Hiszpanii?", "Madryt"};
+        String[] pyt2 = {"2", "Jaki jest największy ocean?", "Pacyfik"};
+
+        String[][] pytania = {pyt1, pyt2};
+
         Random random = new Random();
 
-        do {
-            System.out.println("Chcesz rzucić kostką czy spasować?");
-            System.out.println("Twój wynik to: " + pointsTemp);
-            System.out.println("1. rzucam");
-            System.out.println("2. pasuję");
-            playerChoice = scanner.nextInt();
-            if (playerChoice == 2) {
-                czyGra = false;
-                break;
-            }
-
-            if (pointsTemp < 0) {
-                czyGra = false;
-            }
-
-            wynik = random.nextInt(1, 7);
-            System.out.println("Rzucasz... wypadło " + wynik);
-            if (wynik == pointsTemp) {
-                pointsHard = pointsTemp;
-                pointsTemp = 0;
-            }
-
-            if (wynik == 1) {
-                System.out.println("Przegrałeś!");
-                break;
-            } else {
-                pointsTemp += wynik;
-            }
-            if (pointsTemp > 20) {
-                czyGra = false;
-            }
+        int nrpyt = random.nextInt(pytania.length);
+        String[] aktpyt = pytania[nrpyt];
+        String odp;
+        int pkt=0;
+        Scanner scanner = new Scanner(System.in);
 
 
-        } while (czyGra == true);
+        System.out.println("Pytanie nr " + aktpyt[0]);
+        System.out.println(aktpyt[1]);
+        odp = scanner.next();
+        if (odp.contains(aktpyt[2])) {
+            System.out.println("Odpowiedź prawidłowa - " + odp);
+            pkt = pkt + 1;
 
-        System.out.println("Koniec gry uzbierałeś " + pointsTemp);
+        } else {
+            System.out.println("WRONG");
+        }
+        System.out.println("Twój wynik to " + pkt);
+
     }
 }
