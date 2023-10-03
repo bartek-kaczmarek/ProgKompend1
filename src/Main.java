@@ -5,6 +5,7 @@ public class Main {
 
     static Scanner scanner = new Scanner(System.in);
     static int pkt = 0;
+    static int szansa = 3;
 
     static boolean odpowiedzNaPytanie(String[] pytanie) {
 
@@ -22,6 +23,8 @@ public class Main {
 
         } else {
             System.out.println("WRONG");
+            szansa = szansa-1;
+            System.out.println("Masz tylko " + szansa + " szans.");
             return false;
         }
         return true;
@@ -68,7 +71,7 @@ public class Main {
 
         do {
 
-            System.out.println("Do you want to play a game?");
+            System.out.println("Do you want to play a game? Możesz się pomylić " +szansa +" razy");
             System.out.println("1. TAK");
             System.out.println("2. NIE");
             wybor = scanner.nextInt();
@@ -77,29 +80,34 @@ public class Main {
                 break;
 
 
-            }
-            else {
+            } else {
                 System.out.println("Na ile rund masz sił?");
                 wybor = scanner.nextInt();
             }
-///todo tu coś nie dziala
-            for (int i= 0; i<wybor+1;i++){
+            for (int i = 0; i < wybor; i++) {
                 int nrpyt = random.nextInt(pytania.length);
                 String[] aktpyt = pytania[nrpyt];
 
                 System.out.println("***********");
-                System.out.println("Pytanie nr " + (nrpyt + 1));
-
+                System.out.println("Pytanie nr " + (i+1));
 
                 czyGra = odpowiedzNaPytanie(aktpyt);
 
+
+
+                if (szansa==0) {
+                    czyGra = false;
+                    break;
+                } else {
+                    System.out.println("Masz już " + pkt + " punktów.");
+                    czyGra = false;
+                }
+
             }
-
-
 
         } while (czyGra);
 
-        System.out.println("Twój wynik to " + pkt);
+        System.out.println("KONIEC GRY. Twój wynik to " + pkt);
 
     }
 }
