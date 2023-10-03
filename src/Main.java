@@ -21,6 +21,7 @@ public class Main {
             playerChoice = scanner.nextInt();
             if (playerChoice == 2) {
                 czyGra = false;
+                break;
             }
 
             if (pointsTemp < 0) {
@@ -36,6 +37,7 @@ public class Main {
 
             if (wynik == 1) {
                 System.out.println("Przegrałeś!");
+                break;
             } else {
                 pointsTemp += wynik;
             }
