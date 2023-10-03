@@ -75,16 +75,26 @@ public class Main {
             if (wybor == 2) {
                 czyGra = false;
                 break;
+
+
+            }
+            else {
+                System.out.println("Na ile rund masz sił?");
+                wybor = scanner.nextInt();
+            }
+///todo tu coś nie dziala
+            for (int i= 0; i<wybor+1;i++){
+                int nrpyt = random.nextInt(pytania.length);
+                String[] aktpyt = pytania[nrpyt];
+
+                System.out.println("***********");
+                System.out.println("Pytanie nr " + (nrpyt + 1));
+
+
+                czyGra = odpowiedzNaPytanie(aktpyt);
+
             }
 
-            int nrpyt = random.nextInt(pytania.length);
-            String[] aktpyt = pytania[nrpyt];
-
-            System.out.println("***********");
-            System.out.println("Pytanie nr " + (nrpyt + 1));
-
-
-            czyGra = odpowiedzNaPytanie(aktpyt);
 
 
         } while (czyGra);
