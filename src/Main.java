@@ -94,7 +94,6 @@ public class Main {
                 czyGra = odpowiedzNaPytanie(aktpyt);
 
 
-
                 if (szansa==0) {
                     czyGra = false;
                     break;
